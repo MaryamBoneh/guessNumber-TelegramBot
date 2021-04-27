@@ -16,7 +16,7 @@ def newGame():
 
 @bot.message_handler(commands=['start'])
 def say_wellcom(message):
-    bot.send_message(message.chat.id, 'خوش اومدي🌺 از 1 تا 20 يه عدد رو حدس بزن 😉')
+    bot.send_message(message.chat.id, f'خوش اومدي🌺{message.from_user.first_name} از 1 تا 20 يه عدد رو حدس بزن 😉')
     bot.send_message(message.chat.id, 'با دستور /new می تونی بازی جدید بیاری')
 
 
