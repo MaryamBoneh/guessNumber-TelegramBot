@@ -35,38 +35,32 @@ def send_normal_message(message):
     if message.text.isnumeric():
         global score
         print('user: ', message.text, 'goal: ', number, 'score: ', score)
-        if score > 0:
-            if int(message.text) == number:
-                bot.reply_to(message,  f'تو برنده شدي🎉🎁')
-                newGame()
-                bot.send_message(
-                    message.chat.id, 'از 1 تا 20 يه عدد رو حدس بزن')
-
-            elif int(message.text) > number:
-                score -= 1
-                if score == 0:
-                    bot.send_message(message.chat.id, 'نتونستی تشخیص بدی بسکو😒 امتیازت تموم شد. بریم یه بازی جدید')
-                    newGame()
-                    bot.send_message(message.chat.id, 'از 1 تا 20 يه عدد رو حدس بزن')
-                else:
-                    bot.reply_to(message, 'برو پايين تر')
-                    bot.send_message(message.chat.id, score*'♥️')
-
-            elif int(message.text) < number:
-                score -= 1                
-                if score == 0:
-                    bot.send_message(message.chat.id, 'نتونستی تشخیص بدی بسکو😒 امتیازت تموم شد. بریم یه بازی جدید')
-                    newGame()
-                    bot.send_message(message.chat.id, 'از 1 تا 20 يه عدد رو حدس بزن')
-                else:
-                    bot.reply_to(message, 'برو بالاتر')
-                    bot.send_message(message.chat.id, score*'♥️')
-                
-        else:
-            bot.send_message(message.chat.id, 'نتونستی تشخیص بدی بسکو😒 امتیازت تموم شد. بریم یه بازی جدید')
+        
+        if int(message.text) == number:
+            bot.reply_to(message,  f'تو برنده شدي🎉🎁')
             newGame()
-            bot.send_message(message.chat.id, 'از 1 تا 20 يه عدد رو حدس بزن')
+            bot.send_message(
+                message.chat.id, 'از 1 تا 20 يه عدد رو حدس بزن')
 
+        elif int(message.text) > number:
+            score -= 1
+            if score == 0:
+                bot.send_message(message.chat.id, 'نتونستی تشخیص بدی بسکو😒 امتیازت تموم شد. بریم یه بازی جدید')
+                newGame()
+                bot.send_message(message.chat.id, 'از 1 تا 20 يه عدد رو حدس بزن')
+            else:
+                bot.reply_to(message, 'برو پايين تر')
+                bot.send_message(message.chat.id, score*'♥️')
+
+        elif int(message.text) < number:
+            score -= 1                
+            if score == 0:
+                bot.send_message(message.chat.id, 'نتونستی تشخیص بدی بسکو😒 امتیازت تموم شد. بریم یه بازی جدید')
+                newGame()
+                bot.send_message(message.chat.id, 'از 1 تا 20 يه عدد رو حدس بزن')
+            else:
+                bot.reply_to(message, 'برو بالاتر')
+                bot.send_message(message.chat.id, score*'♥️')
     else:
         if message.text == 'بازي جديد' or message.text == 'بازی جدید':
             newGame()
